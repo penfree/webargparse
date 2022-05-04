@@ -60,6 +60,9 @@ python3.8 -m webargparse -m webargparse.example   # 两个demo都会加入
 ```
 python3.8 -m webargparse -m webargparse.example  --port 8080
 ```
+* 运行效果
+![image](https://user-images.githubusercontent.com/15196366/166636283-90c2ed47-3b6c-4298-bb62-b7bd0bd6dcc7.png)
+
 
 3. 和后端微服务一起打包
 * 可以在微服务的Python包中增加一个tools目录, 包含多个拥有包含STREAMLIT_PARSER和STERAMLIT_FUNCTION变量的脚本. 例如qcaudit.tools
