@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-21 19:37:03
 
 '''
@@ -29,10 +29,10 @@ def process(args):
     st.write(args)
     #return [{'a':1, 'b':3, 'c': 4}, {'a':1, 'b':3, 'd': 4},]
     #return [1,2,3,4]
-    
+
 STREAMLIT_FUNCTION = process
 
 if __name__ == '__main__':
     args = getParser().parse_args()
     process(args)
-    
+

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-21 19:37:03
 
 '''
@@ -25,7 +25,7 @@ def getParser():
     parser.add_argument('--integer', dest='integer', help='这是一个数字', type=int)
     parser.add_argument('-s', dest='source', help='这是一个可以输入多值的字符串', nargs='*', default=['a', 'b'])
     # 这是一个单选的下拉列表
-    parser.add_argument('--output-type', dest='output_type', help='选择返回结果类型, 测试工具输出结果样式', 
+    parser.add_argument('--output-type', dest='output_type', help='选择返回结果类型, 测试工具输出结果样式',
                         choices=['文件', '表格', '短字符串', 'bytes', '字典', '短字符串', '长字符串', 'markdown', '折线图'], default='表格')
     # 这是一个多选框
     parser.add_argument('--multi', dest='multi', help='多选框, 可以选择多个选项', nargs='+' , default=['表格', '文件'],
@@ -73,13 +73,13 @@ def process(args):
         return ''.join(['长字符串'] * 500)
     elif args.output_type == 'markdown':
         return '''<markdown># 一级标题
-## 二级标题    
+## 二级标题
 </markdown>'''
     elif args.output_type == 'bytes':
         return b'this is a bytes'
-        
+
     return {'a':1, 'b':3, 'c': 4}
-    
+
 # ArgumentParser对象, 必须有此变量
 STREAMLIT_PARSER = getParser()
 # 处理参数的函数, 必须有此变量
@@ -88,4 +88,4 @@ STREAMLIT_FUNCTION = process
 if __name__ == '__main__':
     args = getParser().parse_args()
     process(args)
-    
+

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-22 02:21:27
 
 '''
@@ -21,7 +21,7 @@ def time(s) -> dt.time:
     return dt.time(t.tm_hour, t.tm_min, t.tm_sec)
 
 class ResultData:
-    
+
     RESULT_TYPE_SMALL_STRING = 'small_str'
     RESULT_TYPE_LONG_STRING = 'long_str'
     RESULT_TYPE_BYTES = 'long_str'
@@ -34,12 +34,12 @@ class ResultData:
     RESULT_TYPE_AREA_CHART = 'area_chart'
     RESULT_TYPE_MAP = 'map'
     RESULT_TYPE_IMAGE = 'image'
-    
+
     def __init__(self, data, type="dataframe", **kwargs):
         self.data = data
         self.type = type
         self.kwargs = kwargs
-    
+
     def render(self):
         if self.type == self.RESULT_TYPE_AREA_CHART:
             st.area_chart(self.data, **self.kwargs)

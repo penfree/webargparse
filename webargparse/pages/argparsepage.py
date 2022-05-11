@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-21 17:16:37
 
 '''
@@ -27,11 +27,11 @@ def dftocsv(df):
     return df.to_csv().encode('utf-8')
 
 class StreamlitPage:
-    
+
     def __init__(self, title: str):
         # 页面标题
         self.title = title
-    
+
     def render(self):
         """渲染页面
         """
@@ -39,19 +39,19 @@ class StreamlitPage:
 
     def __str__(self):
         return self.title
-    
+
     def __eq__(self, __o: object) -> bool:
         return str(__o) == str(self)
 
 
 class ActionWebComponent:
-    
+
     def __init__(self, action: Action):
         self.action = action
-    
+
     @property
     def Label(self):
-        text = ' '.join(self.action.option_strings) 
+        text = ' '.join(self.action.option_strings)
         if not text:
             text = self.action.dest
         if self.action.help:
@@ -59,14 +59,14 @@ class ActionWebComponent:
         if self.action.required or self.action.nargs in ('+', ):
             text += '[必须]'
         return text
-    
+
     @property
     def Default(self):
         # 允许多值的字符串类型
         if isinstance(self.action.default, list) and not self.action.choices:
             return '\n'.join(self.action.default)
         return self.action.default or ''
-    
+
     @property
     def PlaceHolder(self):
         if self.action.nargs in ('+', '*'):
@@ -74,7 +74,7 @@ class ActionWebComponent:
         else:
             return ''
 
-    
+
     def render(self):
         # 带选项
         if self.action.choices:
@@ -83,8 +83,8 @@ class ActionWebComponent:
                 return st.multiselect(label=self.Label, options=list(self.action.choices), default=self.Default)
             # 单选
             else:
-                return st.selectbox(label=self.Label, 
-                                    options=list(self.action.choices), 
+                return st.selectbox(label=self.Label,
+                                    options=list(self.action.choices),
                                     index= 0 if self.Default not in self.action.choices else list(self.action.choices).index(self.Default))
         # store_true
         elif isinstance(self.action, _StoreTrueAction):
@@ -113,7 +113,7 @@ class ActionWebComponent:
     @property
     def Required(self):
         return self.action.required or self.action.nargs == '+'
-    
+
     def parseResult(self, result):
         """解析组件的返回值, 并转换成action中预期的类型
         """
@@ -149,7 +149,7 @@ class ActionWebComponent:
             return value
 
 class ArgparsePage(StreamlitPage):
-    
+
     def __init__(self, parser: ArgumentParser, func: Callable, title=None, detail_func=None):
         """
 
@@ -162,7 +162,7 @@ class ArgparsePage(StreamlitPage):
         self.parser = parser
         self.func = func
         self.detail_func = detail_func
-    
+
     def getComponents(self):
         return [
             ActionWebComponent(action) for action in self.parser._actions if action.default != SUPPRESS
@@ -234,7 +234,7 @@ class ArgparsePage(StreamlitPage):
         elif isinstance(ret_value, tuple):
             t = types.ResultData(ret_value[0], type=ret_value[1])
             t.render()
-    
+
     def render(self):
         """渲染页面
         """
@@ -251,7 +251,7 @@ class ArgparsePage(StreamlitPage):
                 submited = st.form_submit_button(label='提交')
                 if submited:
                     st.session_state['submited'] = True
-        
+
         if submited or not components or ('submited' in st.session_state and st.session_state['submited']):
             try:
                 args = self.getArgs(result)
@@ -275,4 +275,4 @@ class ArgparsePage(StreamlitPage):
     ### 输出:
     {f.getvalue()}
     ''')
-        
+

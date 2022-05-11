@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-22 01:12:32
 
 '''
@@ -38,6 +38,6 @@ Homepage.run()
         my_env['WEB_ARGPARSE_MODULE_NAME'] = args.module
     ret = subprocess.run('streamlit run  %s  --browser.gatherUsageStats=false --server.port %s --server.headless true' % (f.name, args.port), env=my_env, shell=True, stderr=subprocess.STDOUT, check=True)
     print(ret)
-    
+
 if __name__ == '__main__':
     main()

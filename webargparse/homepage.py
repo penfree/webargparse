@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Author: qiupengfei@rxthinking.com
+Author: penfree
 Date: 2022-01-21 17:12:37
 
 '''
@@ -14,28 +14,28 @@ from argparse import ArgumentParser
 
 
 class Homepage:
-    
+
     def __init__(self):
         self.pages: List[ArgparsePage] = []
         #self.pages = []
-    
+
     def addPage(self, page: ArgparsePage):
         #
         # #   'title': page.title,
         #    'page': page
         #})
         self.pages.append(page)
-    
+
     def render(self):
-        # Drodown to select the page to run  
+        # Drodown to select the page to run
         page = st.sidebar.selectbox(
-            '功能清单,请选择', 
-            self.pages, 
+            '功能清单,请选择',
+            self.pages,
             format_func=lambda p: p.title
         )
 
         page.render()
-    
+
     @classmethod
     def getSubParsers(cls, parser: ArgumentParser):
         sub_parsers = [action for action in parser._actions if isinstance(action, argparse._SubParsersAction)]
@@ -58,7 +58,7 @@ class Homepage:
                 t._add_action(deepcopy(action))
             result.append(t)
         return result
-    
+
     @classmethod
     def run(cls):
         import sys, os, pkgutil, importlib
@@ -86,7 +86,7 @@ class Homepage:
                     child = importlib.import_module(f'{m.__name__}.{sm.name}')
                     modules.append(child)
         hp.render()
-        
+
 
 if __name__ == '__main__':
     from webargparse.example.demo import STREAMLIT_FUNCTION, STREAMLIT_PARSER
