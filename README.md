@@ -112,9 +112,9 @@ def getParser():
     return parser
 ```
 
-[demo2.jpg](image/README/demo2.jpg)
+![demo2.jpg](image/README/demo2.jpg)
 
-[demo3.jpg](image/README/demo3.jpg)
+![demo3.jpg](image/README/demo3.jpg)
 
 ### 输出效果
 
@@ -160,12 +160,11 @@ STREAMLIT_PARSER = getParser()
 
 ```
 
-
-[demo4.jpg](image/README/demo4.jpg "必选项")
-[demo5.jpg](image/README/demo5.jpg "必选项")
-[demo6.jpg](image/README/demo6.jpg "必选项")
-[demo7.jpg](image/README/demo7.jpg "必选项")
-[demo8.jpg](image/README/demo8.jpg "必选项")
+![demo4.jpg](image/README/demo4.jpg "必选项")
+![demo5.jpg](image/README/demo5.jpg "必选项")
+![demo6.jpg](image/README/demo6.jpg "必选项")
+![demo7.jpg](image/README/demo7.jpg "必选项")
+![demo8.jpg](image/README/demo8.jpg "必选项")
 
 
 # 已知限制
