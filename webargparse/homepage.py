@@ -62,6 +62,7 @@ class Homepage:
     @classmethod
     def run(cls):
         import sys, os, pkgutil, importlib
+        st.set_page_config(layout="wide")
         hp = Homepage()
         module_name = os.environ['WEB_ARGPARSE_MODULE_NAME']
         modules = []

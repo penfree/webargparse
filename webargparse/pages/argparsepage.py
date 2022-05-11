@@ -122,8 +122,12 @@ class ActionWebComponent:
         if self.action.type == open or isinstance(self.action.type, argparse.FileType):
             # 文件类型
             if result is not None:
-                tf = NamedTemporaryFile(mode='w+')
-                tf.write(result.getvalue().decode('utf-8'))
+                if isinstance(self.action.type, argparse.FileType) and 'b' in self.action.type._mode:
+                    tf = NamedTemporaryFile(mode='wb+')
+                    tf.write(result.getvalue())
+                else:
+                    tf = NamedTemporaryFile(mode='w+')
+                    tf.write(result.getvalue().decode('utf-8'))
                 tf.seek(0)
                 return tf
         elif self.action.type == types.datetime:
