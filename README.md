@@ -2,6 +2,12 @@
 
 这是一个将argparse的parser转换成web界面的工具, 可以只修改几行代码就将一个普通的命令行脚本变成一个可以分享出去的图形界面.
 
+## 安装方法
+
+```
+pip install pywebargparse
+```
+
 ## 使用方法
 
 1. 编写一个基于argparse的命令行脚本.参考example/demo.py. 脚本的具体编写方法参考demo.py中注释.需要注意的几个地方是:

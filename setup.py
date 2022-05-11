@@ -20,13 +20,14 @@ version = "0.1"
 
 # Create build meta
 setup(
-    name="webargparse",
+    name="pywebargparse",
     version=version,
     author="penfree",
     url="https://github.com/penfree/webargparse",
     packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
-    description="",
-    long_description=open("README.md").read(),
+    description="This is a tool to create an web ui from argparse script",
+    long_description='',
+    classifiers=['Programming Language :: Python :: 3.8']
 )
